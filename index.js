@@ -77,11 +77,23 @@ class Cubo {
 	// move U horario
 	u() {
 		this.rotateHorarioArray(this.faces.u);
+		let lInicial = this.faces.l.slice(0);
+
+		this.faces.l[0] = this.faces.b[0];
+		this.faces.b[0] = this.faces.r[0];
+		this.faces.r[0] = this.faces.f[0];
+		this.faces.f[0] = lInicial[0];
 	}
 
 	// move D horario
 	d() {
 		this.rotateHorarioArray(this.faces.d);
+		let lInicial = this.faces.l.slice(0);
+
+		this.faces.l[2] = this.faces.b[2];
+		this.faces.b[2] = this.faces.r[2];
+		this.faces.r[2] = this.faces.f[2];
+		this.faces.f[2] = lInicial[2];
 	}
 
 	// move L horario
@@ -143,5 +155,10 @@ class Cubo {
 
 let cube = new Cubo();
 
-cube.ua();
-console.log(cube.getFaces().u);
+cube.u();
+cube.u();
+
+cube.d();
+cube.d();
+
+console.log(cube.getFaces());
