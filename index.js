@@ -208,6 +208,20 @@ class Cubo {
 		for (let i = min; i < max; i++)
 			fn(i)
 	}
+
+	showFacesColored () {
+		for (var e of Object.entries(this.getFaces()) ) {
+			var k = e[1];
+			var v = e[0];
+
+			logpty.b(['', '' + v + '\n '],
+				[k[0][0], '[]'], [k[0][1], '[]'], [k[0][2], '[]'], ['', '\n '],
+				[k[1][0], '[]'], [k[1][1], '[]'], [k[1][2], '[]'], ['', '\n '],
+				[k[2][0], '[]'], [k[2][1], '[]'], [k[2][2], '[]'], ['', '\n ']
+			);
+		}
+
+	}
 }
 
 let cube = new Cubo();
@@ -224,4 +238,4 @@ cube.l();
 cube.r();
 cube.r();
 
-console.log(cube.getFaces());
+console.log(cube.showFacesColored());
