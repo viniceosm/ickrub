@@ -112,8 +112,8 @@ class Cubo {
 		this.faces = newFaces;
 	}
 
-	// move L horario
-	l () {
+	// move R horario
+	r () {
 		let newFaces = {};
 		let uInicial = [[], [], []];
 		let jTroca = 2;
@@ -125,7 +125,7 @@ class Cubo {
 		uInicial[1][jTroca] = this.faces.u[1][jTroca];
 		uInicial[2][jTroca] = this.faces.u[2][jTroca];
 
-		this.rotateHorarioArray(this.faces.l);
+		this.rotateHorarioArray(this.faces.r);
 
 		this.repeat(0, 3, i => { newFaces.u[i][jTroca] = this.faces.f[i][jTroca] });
 		this.repeat(0, 3, i => { newFaces.f[i][jTroca] = this.faces.d[i][jTroca] });
@@ -135,8 +135,8 @@ class Cubo {
 		this.faces = newFaces;
 	}
 
-	// move R horario
-	r () {
+	// move L horario
+	l () {
 		let newFaces = {};
 		let uInicial = [[], [], []];
 		let jTroca = 0;
@@ -148,7 +148,7 @@ class Cubo {
 		uInicial[1][jTroca] = this.faces.u[1][jTroca];
 		uInicial[2][jTroca] = this.faces.u[2][jTroca];
 
-		this.rotateHorarioArray(this.faces.r);
+		this.rotateHorarioArray(this.faces.l);
 
 		this.repeat(0, 3, i => { newFaces.u[i][jTroca] = this.faces.b[i][jTroca] });
 		this.repeat(0, 3, i => { newFaces.b[i][jTroca] = this.faces.d[i][jTroca] });
