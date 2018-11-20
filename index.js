@@ -160,7 +160,35 @@ class Cubo {
 
 	// move F horario
 	f () {
+		let newFaces = {};
+		let uInicial = [[], [], []];
+
+		newFaces = Object.assign(newFaces, this.faces);
+
+		// fui obrigado a fazer essas 3 linhas, infelizmente
+		uInicial[2][0] = this.faces.u[2][0];
+		uInicial[2][1] = this.faces.u[2][1];
+		uInicial[2][2] = this.faces.u[2][2];
+
 		this.rotateHorarioArray(this.faces.f);
+
+		newFaces.u[2][2] = this.faces.l[0][2];
+		newFaces.u[2][1] = this.faces.l[1][2];
+		newFaces.u[2][0] = this.faces.l[2][2];
+
+		newFaces.l[2][2] = this.faces.d[0][2];
+		newFaces.l[1][2] = this.faces.d[0][1];
+		newFaces.l[0][2] = this.faces.d[0][0];
+
+		newFaces.d[0][0] = this.faces.r[0][0];
+		newFaces.d[0][1] = this.faces.r[1][0];
+		newFaces.d[0][2] = this.faces.r[2][0];
+
+		newFaces.r[0][0] = uInicial[2][0];
+		newFaces.r[1][0] = uInicial[2][1];
+		newFaces.r[2][0] = uInicial[2][2];
+
+		this.faces = newFaces;
 	}
 
 	// move B horario
@@ -237,5 +265,8 @@ cube.l();
 
 cube.r();
 cube.r();
+
+cube.f();
+cube.f();
 
 console.log(cube.showFacesColored());
