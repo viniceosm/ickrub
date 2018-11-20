@@ -238,17 +238,28 @@ class Cubo {
 	}
 
 	showFacesColored () {
-		for (var e of Object.entries(this.getFaces()) ) {
-			var k = e[1];
-			var v = e[0];
-
-			logpty.b(['', '' + v + '\n '],
-				[k[0][0], '[]'], [k[0][1], '[]'], [k[0][2], '[]'], ['', '\n '],
-				[k[1][0], '[]'], [k[1][1], '[]'], [k[1][2], '[]'], ['', '\n '],
-				[k[2][0], '[]'], [k[2][1], '[]'], [k[2][2], '[]'], ['', '\n ']
+		for (var [k, v] of Object.entries(this.getFaces()) ) {
+			logpty.b(['', '' + k + '\n '],
+				[v[0][0], '[]'], [v[0][1], '[]'], [v[0][2], '[]'], ['', '\n '],
+				[v[1][0], '[]'], [v[1][1], '[]'], [v[1][2], '[]'], ['', '\n '],
+				[v[2][0], '[]'], [v[2][1], '[]'], [v[2][2], '[]'], ['', '\n ']
 			);
 		}
+	}
 
+	paintDivs() {
+		for (var [k, v] of Object.entries(this.getFaces())) {
+			this.repeat(0, 3, i => {
+				this.repeat(0, 3, j => {
+					try {
+						document.querySelector(`#${k} div[class="${i}x${j}"]`).style.backgroundColor = v[i][j];
+					} catch (e) {
+						console.error(e);
+						console.error(`Selector: #${k} div[class="${i}x${j}"]`);
+					}
+				});
+			});
+		}
 	}
 }
 
@@ -270,3 +281,7 @@ cube.f();
 cube.f();
 
 console.log(cube.showFacesColored());
+
+window.addEventListener('load', function () {
+	cube.paintDivs();
+});
