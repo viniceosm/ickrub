@@ -193,7 +193,35 @@ class Cubo {
 
 	// move B horario
 	b () {
+		let newFaces = {};
+		let uInicial = [[], [], []];
+
+		newFaces = Object.assign(newFaces, this.faces);
+
+		// fui obrigado a fazer essas 3 linhas, infelizmente
+		uInicial[0][0] = this.faces.u[0][0];
+		uInicial[0][1] = this.faces.u[0][1];
+		uInicial[0][2] = this.faces.u[0][2];
+
 		this.rotateHorarioArray(this.faces.b);
+
+		newFaces.u[0][2] = this.faces.l[0][0];
+		newFaces.u[0][1] = this.faces.l[1][0];
+		newFaces.u[0][0] = this.faces.l[2][0];
+
+		newFaces.l[0][0] = this.faces.d[2][0];
+		newFaces.l[1][0] = this.faces.d[2][1];
+		newFaces.l[2][0] = this.faces.d[2][2];
+
+		newFaces.d[2][0] = this.faces.r[0][2];
+		newFaces.d[2][1] = this.faces.r[1][2];
+		newFaces.d[2][2] = this.faces.r[2][2];
+
+		newFaces.r[0][2] = uInicial[0][0];
+		newFaces.r[1][2] = uInicial[0][1];
+		newFaces.r[2][2] = uInicial[0][2];
+
+		this.faces = newFaces;
 	}
 
 	// move U anti horario = horario * 3
@@ -252,10 +280,10 @@ class Cubo {
 			this.repeat(0, 3, i => {
 				this.repeat(0, 3, j => {
 					try {
-						document.querySelector(`#${k} div[class="${i}x${j}"]`).style.backgroundColor = v[i][j];
+						document.querySelector(`#${k} div[class^="${i}x${j}"]`).style.backgroundColor = v[i][j];
 					} catch (e) {
 						console.error(e);
-						console.error(`Selector: #${k} div[class="${i}x${j}"]`);
+						console.error(`Selector: #${k} div[class^="${i}x${j}"]`);
 					}
 				});
 			});
@@ -280,8 +308,11 @@ cube.r();
 cube.f();
 cube.f();
 
-console.log(cube.showFacesColored());
+cube.b();
+cube.b();
 
 window.addEventListener('load', function () {
+	console.log(cube.showFacesColored());
+
 	cube.paintDivs();
 });

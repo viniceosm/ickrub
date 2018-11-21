@@ -17,48 +17,51 @@
 			width: 66px;
 			height: 66px;
 		}
-		.face div {
+		.face .quadradinho {
 			width: 20px;
 			height: 20px;
 		}
 		.col {
 			float: left;
 		}
-		.col.face div {
+		.col.face .quadradinho {
 			float: left;
 			border: 1px solid black;
 		}
 		.row {
-			overflow: hidden;
+			height: 90px;
 		}
 		#l {
-			height: 70px;
-			width: 66px;
-			-ms-transform: skewY(50deg); /* IE 9 */
-			-webkit-transform: skewY(50deg); /* Safari */
-			transform: skewY(50deg); /* Standard syntax */
-
-			border: 1px solid black;
+			-ms-transform: scale(1, 0.6) rotate(50deg) skewX(50deg); /* IE 9 */
+			-webkit-transform: scale(1, 0.6) rotate(50deg) skewX(50deg); /* Safari */
+			transform: scale(1, 0.6) rotate(50deg) skewX(50deg); /* Standard syntax */
 		}
 		#r {
-			-ms-transform: skewY(-50deg); /* IE 9 */
-			-webkit-transform: skewY(-50deg); /* Safari */
-			transform: skewY(-50deg); /* Standard syntax */
+			-ms-transform: scale(1, 0.6) rotate(-50deg) skewX(-50deg); /* IE 9 */
+			-webkit-transform: scale(1, 0.6) rotate(-50deg) skewX(-50deg); /* Safari */
+			transform: scale(1, 0.6) rotate(-50deg) skewX(-50deg); /* Standard syntax */
+		}
+		#l, #r {
+			width: 60px;
+			margin-top: -15px;
+		}
+		#l .quadradinho, #r .quadradinho {
+			width: 18px;
 		}
 	</style>
 </head>
 <body>
 	<div class="row">
 		<div class="col face" id="b">
-			<div class="0x0"></div>
-			<div class="0x1"></div>
-			<div class="0x2"></div>
-			<div class="1x0"></div>
-			<div class="1x1"></div>
-			<div class="1x2"></div>
-			<div class="2x0"></div>
-			<div class="2x1"></div>
-			<div class="2x2"></div>
+			<div class="0x0 quadradinho"></div>
+			<div class="0x1 quadradinho"></div>
+			<div class="0x2 quadradinho"></div>
+			<div class="1x0 quadradinho"></div>
+			<div class="1x1 quadradinho"></div>
+			<div class="1x2 quadradinho"></div>
+			<div class="2x0 quadradinho"></div>
+			<div class="2x1 quadradinho"></div>
+			<div class="2x2 quadradinho"></div>
 		</div>
 		<div class="col hidden face">
 		</div>
@@ -70,15 +73,15 @@
 		<div class="col hidden face">
 		</div>
 		<div class="col face" id="u">
-			<div class="0x0"></div>
-			<div class="0x1"></div>
-			<div class="0x2"></div>
-			<div class="1x0"></div>
-			<div class="1x1"></div>
-			<div class="1x2"></div>
-			<div class="2x0"></div>
-			<div class="2x1"></div>
-			<div class="2x2"></div>
+			<div class="0x0 quadradinho"></div>
+			<div class="0x1 quadradinho"></div>
+			<div class="0x2 quadradinho"></div>
+			<div class="1x0 quadradinho"></div>
+			<div class="1x1 quadradinho"></div>
+			<div class="1x2 quadradinho"></div>
+			<div class="2x0 quadradinho"></div>
+			<div class="2x1 quadradinho"></div>
+			<div class="2x2 quadradinho"></div>
 		</div>
 		<div class="col hidden face">
 		</div>
@@ -86,37 +89,37 @@
 
 	<div class="row">
 		<div class="col face" id="l">
-			<div class="0x0"></div>
-			<div class="0x1"></div>
-			<div class="0x2"></div>
-			<div class="1x0"></div>
-			<div class="1x1"></div>
-			<div class="1x2"></div>
-			<div class="2x0"></div>
-			<div class="2x1"></div>
-			<div class="2x2"></div>
+			<div class="0x0 quadradinho"></div>
+			<div class="0x1 quadradinho"></div>
+			<div class="0x2 quadradinho"></div>
+			<div class="1x0 quadradinho"></div>
+			<div class="1x1 quadradinho"></div>
+			<div class="1x2 quadradinho"></div>
+			<div class="2x0 quadradinho"></div>
+			<div class="2x1 quadradinho"></div>
+			<div class="2x2 quadradinho"></div>
 		</div>
 		<div class="col face" id="f">
-			<div class="0x0"></div>
-			<div class="0x1"></div>
-			<div class="0x2"></div>
-			<div class="1x0"></div>
-			<div class="1x1"></div>
-			<div class="1x2"></div>
-			<div class="2x0"></div>
-			<div class="2x1"></div>
-			<div class="2x2"></div>
+			<div class="0x0 quadradinho"></div>
+			<div class="0x1 quadradinho"></div>
+			<div class="0x2 quadradinho"></div>
+			<div class="1x0 quadradinho"></div>
+			<div class="1x1 quadradinho"></div>
+			<div class="1x2 quadradinho"></div>
+			<div class="2x0 quadradinho"></div>
+			<div class="2x1 quadradinho"></div>
+			<div class="2x2 quadradinho"></div>
 		</div>
 		<div class="col face" id="r">
-			<div class="0x0"></div>
-			<div class="0x1"></div>
-			<div class="0x2"></div>
-			<div class="1x0"></div>
-			<div class="1x1"></div>
-			<div class="1x2"></div>
-			<div class="2x0"></div>
-			<div class="2x1"></div>
-			<div class="2x2"></div>
+			<div class="0x0 quadradinho"></div>
+			<div class="0x1 quadradinho"></div>
+			<div class="0x2 quadradinho"></div>
+			<div class="1x0 quadradinho"></div>
+			<div class="1x1 quadradinho"></div>
+			<div class="1x2 quadradinho"></div>
+			<div class="2x0 quadradinho"></div>
+			<div class="2x1 quadradinho"></div>
+			<div class="2x2 quadradinho"></div>
 		</div>
 	</div>
 
@@ -124,15 +127,15 @@
 		<div class="col hidden face">
 		</div>
 		<div class="col face" id="d">
-			<div class="0x0"></div>
-			<div class="0x1"></div>
-			<div class="0x2"></div>
-			<div class="1x0"></div>
-			<div class="1x1"></div>
-			<div class="1x2"></div>
-			<div class="2x0"></div>
-			<div class="2x1"></div>
-			<div class="2x2"></div>
+			<div class="0x0 quadradinho"></div>
+			<div class="0x1 quadradinho"></div>
+			<div class="0x2 quadradinho"></div>
+			<div class="1x0 quadradinho"></div>
+			<div class="1x1 quadradinho"></div>
+			<div class="1x2 quadradinho"></div>
+			<div class="2x0 quadradinho"></div>
+			<div class="2x1 quadradinho"></div>
+			<div class="2x2 quadradinho"></div>
 		</div>
 		<div class="col hidden face">
 		</div>
