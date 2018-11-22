@@ -17,11 +17,15 @@ class Cubo {
 		fillFaces.bind(this)();
 
 		function fillFaces () {
-			let faces = ['u', 'd', 'b', 'f', 'r', 'l'];
+			let faces = this.nameFaces();
 			for (let face of faces) {
 				this.faces[face] = Array.from({ length: 3 }, _ => Array.from({ length: 3 }, _ => this.faces[face]));
 			}
 		}
+	}
+
+	nameFaces () {
+		return ['u', 'd', 'b', 'f', 'r', 'l'];
 	}
 
 	rotateHorarioArray (aThis) {
@@ -210,6 +214,34 @@ class Cubo {
 		this.paintDivs();
 	}
 
+	passo1() {
+		let corCruzMontar = 'white';
+		let newFaces = {};
+		// let uInicial = [[], [], []];
+
+		newFaces = Object.assign(newFaces, this.faces);
+
+		let faces = this.nameFaces();
+
+		// Procura laterais para montar a cruz
+		faces.map(face => {
+			let coordsValidar = ['0,1', '2,1', '1,0', '1,2'];
+
+			for (let coordValidar of coordsValidar) {
+				// verifica se lateral tem a corCruzMontar
+				if (this.getValueCoord(this.faces[face], coordValidar) == corCruzMontar) {
+					// console.log(face, coordValidar, 'tem', corCruzMontar);
+
+				}
+			}
+		})
+	}
+
+	getValueCoord (face, ij) {
+		let ijS = ij.split(',');
+		return face[ijS[0]][ijS[1]];
+	}
+
 	// move U anti horario = horario * 3
 	ua () {
 		for (let i = 0; i < 3; i++)
@@ -282,7 +314,7 @@ class Cubo {
 
 	shuffle() {
 		this.repeat(0, 20, i => {
-			let moves = ['u', 'd', 'b', 'f', 'r', 'l'];
+			let moves = this.nameFaces();
 			moves = [...moves, ...moves.map(v => v + 'a')]; // concat movimentos com movimentos anti horarios
 
 			let indexMove = Math.floor(Math.random() * moves.length) + 0;
@@ -298,4 +330,5 @@ let cube = new Cubo();
 
 window.addEventListener('load', function () {
 	cube.shuffle();
+	cube.passo1();
 });
