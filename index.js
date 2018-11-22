@@ -94,6 +94,7 @@ class Cubo {
 		newFaces.f[0] = lInicial[0];
 
 		this.faces = newFaces;
+		this.paintDivs();
 	}
 
 	// move D horario
@@ -110,6 +111,7 @@ class Cubo {
 		newFaces.f[2] = lInicial[2];
 
 		this.faces = newFaces;
+		this.paintDivs();
 	}
 
 	// move R horario
@@ -133,6 +135,7 @@ class Cubo {
 		this.repeat(0, 3, i => { newFaces.b[i][jTroca] = uInicial[i][jTroca] });
 
 		this.faces = newFaces;
+		this.paintDivs();
 	}
 
 	// move L horario
@@ -156,6 +159,7 @@ class Cubo {
 		this.repeat(0, 3, i => { newFaces.f[i][jTroca] = uInicial[i][jTroca] });
 
 		this.faces = newFaces;
+		this.paintDivs();
 	}
 
 	// move F horario
@@ -189,6 +193,7 @@ class Cubo {
 		newFaces.r[2][0] = uInicial[2][2];
 
 		this.faces = newFaces;
+		this.paintDivs();
 	}
 
 	// move B horario
@@ -222,6 +227,7 @@ class Cubo {
 		newFaces.r[2][2] = uInicial[0][2];
 
 		this.faces = newFaces;
+		this.paintDivs();
 	}
 
 	// move U anti horario = horario * 3
@@ -289,30 +295,23 @@ class Cubo {
 			});
 		}
 	}
+
+	shuffle() {
+		this.repeat(0, 20, i => {
+			let moves = ['u', 'd', 'b', 'f', 'r', 'l'];
+			moves = [...moves, ...moves.map(v => v + 'a')]; // concat movimentos com movimentos anti horarios
+
+			let indexMove = Math.floor(Math.random() * moves.length) + 0;
+
+			this[moves[indexMove]]();
+		});
+
+		this.paintDivs();
+	}
 }
 
 let cube = new Cubo();
 
-cube.u();
-cube.u();
-
-cube.d();
-cube.d();
-
-cube.l();
-cube.l();
-
-cube.r();
-cube.r();
-
-cube.f();
-cube.f();
-
-cube.b();
-cube.b();
-
 window.addEventListener('load', function () {
-	console.log(cube.showFacesColored());
-
-	cube.paintDivs();
+	cube.shuffle();
 });
