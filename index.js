@@ -11,36 +11,16 @@ class Cubo {
 			amarelo: 'yellow',
 		});
 
-		this.faces = {
-			// up
-			u: [[this.cores.verde, this.cores.verde, this.cores.verde],
-				[this.cores.verde, this.cores.verde, this.cores.verde],
-				[this.cores.verde, this.cores.verde, this.cores.verde]],
+		let [u, d, l, r, f, b] = [this.cores.verde, this.cores.azul, this.cores.laranja, this.cores.vermelho, this.cores.branco, this.cores.amarelo];
+		this.faces = { u, d, l, r, f, b };
 
-			// down
-			d: [[this.cores.azul, this.cores.azul, this.cores.azul],
-				[this.cores.azul, this.cores.azul, this.cores.azul],
-				[this.cores.azul, this.cores.azul, this.cores.azul]],
+		fillFaces.bind(this)();
 
-			// left
-			l: [[this.cores.laranja, this.cores.laranja, this.cores.laranja],
-				[this.cores.laranja, this.cores.laranja, this.cores.laranja],
-				[this.cores.laranja, this.cores.laranja, this.cores.laranja],],
-
-			// right
-			r: [[this.cores.vermelho, this.cores.vermelho, this.cores.vermelho],
-				[this.cores.vermelho, this.cores.vermelho, this.cores.vermelho],
-				[this.cores.vermelho, this.cores.vermelho, this.cores.vermelho]],
-
-			// front
-			f: [[this.cores.branco, this.cores.branco, this.cores.branco],
-				[this.cores.branco, this.cores.branco, this.cores.branco],
-				[this.cores.branco, this.cores.branco, this.cores.branco]],
-
-			// back
-			b: [[this.cores.amarelo, this.cores.amarelo, this.cores.amarelo],
-				[this.cores.amarelo, this.cores.amarelo, this.cores.amarelo],
-				[this.cores.amarelo, this.cores.amarelo, this.cores.amarelo]]
+		function fillFaces () {
+			let faces = ['u', 'd', 'b', 'f', 'r', 'l'];
+			for (let face of faces) {
+				this.faces[face] = Array.from({ length: 3 }, _ => Array.from({ length: 3 }, _ => this.faces[face]));
+			}
 		}
 	}
 
@@ -273,11 +253,15 @@ class Cubo {
 
 	showFacesColored () {
 		for (var [k, v] of Object.entries(this.getFaces()) ) {
-			logpty.b(['', '' + k + '\n '],
-				[v[0][0], '[]'], [v[0][1], '[]'], [v[0][2], '[]'], ['', '\n '],
-				[v[1][0], '[]'], [v[1][1], '[]'], [v[1][2], '[]'], ['', '\n '],
-				[v[2][0], '[]'], [v[2][1], '[]'], [v[2][2], '[]'], ['', '\n ']
-			);
+			let arraysLog = v.reduce((acc, line) => {
+				let lineNew = line.reduce((acc, colunm) => {
+					return [...acc, [colunm, '[]'] ];
+				}, []);
+
+				return [...acc, ...lineNew, ['', '\n '] ];
+			}, []);
+
+			logpty.b(['', '' + k + '\n '], ...arraysLog);
 		}
 	}
 
